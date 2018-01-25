@@ -1,6 +1,8 @@
 # Extending the php apache image.
 FROM php:7.1-apache
 
+RUN a2enmod rewrite headers;
+
 RUN apt-get -yqq update \
     && apt-get install -y --no-install-recommends \
         apt-utils \
@@ -14,9 +16,6 @@ RUN apt-get -yqq update \
         libpng12-dev \
         ;
 
-# Run the a2enmod command to install mod_rewrite.
-RUN a2enmod rewrite \
-    ;
 
 # Install some updates php extensions.
 RUN docker-php-ext-install \
