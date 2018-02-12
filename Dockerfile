@@ -31,11 +31,7 @@ RUN docker-php-ext-install \
     mcrypt \
     ;
 
-
-RUN pecl install xdebug-2.5.0 \
-    && pecl install zip \
-    && docker-php-ext-enable xdebug zip \
-    ;
+RUN npm install -g yarn
 
 COPY composer.phar /usr/local/bin/composer
 
